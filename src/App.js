@@ -26,6 +26,9 @@ import SearchProduct from "./components/SearchProduct";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  
+  
+  
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -57,7 +60,7 @@ const App = () => {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/all"} className="navbar-brand">
+        <Link to={"/"} className="navbar-brand">
           Online Shopping App
         </Link>
         <div className="navbar-nav mr-auto">
@@ -168,8 +171,8 @@ const App = () => {
 
       <div className="container mt-3">
         <Routes>
-          {/* <Route exact path={"/"} element={<Home />} />
-          <Route exact path={"/home"} element={<Home />} /> */}
+          <Route exact path={"/"} element={<AllProduct />} />
+          {/* <Route exact path={"/home"} element={<Home />} /> */}
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/profile" element={<Profile />} />

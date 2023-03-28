@@ -11,12 +11,13 @@ function AllProduct() {
     height:"300px"
    };
 
-    const [products, setProducts] = useState("");
+    const [products, setProducts] = useState();
 
     useEffect(() => {
         ProductService.getAllProduct().then(
           (response) => {
             setProducts(response.data);
+            console.log(response);
             console.log(response.data);
           },
           (error) => {
@@ -40,7 +41,7 @@ function AllProduct() {
     <>
     <div className = "fluid-container">
       {/* <img src="./banner.jpg" class="rounded img-fluid" alt="" /> */}
-        <img src="./mobile_banner.jpg" class="rounded img-fluid" alt="" style={mystyle} />
+        <img src="./mobile_banner.jpg" className="rounded img-fluid" alt="" style={mystyle} />
       </div>
     <div className="ml-30" style={{marginLeft: "90px" }}>
       {/* <h2>All Product Page</h2> */}
