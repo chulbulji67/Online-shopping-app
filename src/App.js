@@ -13,9 +13,16 @@ import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Test from "./components/Test";
+import AllProduct from "./components/AllProduct";
+import AddProduct from "./components/AddProduct";
+import DeleteProduct from "./components/DeleteProduct";
+import UpdateProduct from "./components/UpdateProduct";
+
+
 
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
+import SearchProduct from "./components/SearchProduct";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -50,20 +57,27 @@ const App = () => {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/"} className="navbar-brand">
-          bezKoder
+        <Link to={"/all"} className="navbar-brand">
+          Online Shopping App
         </Link>
         <div className="navbar-nav mr-auto">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to={"/home"} className="nav-link">
               Home
+            </Link>
+          </li> */}
+
+        {/* Showing All Products */}
+          <li className="nav-item">
+            <Link to={"/all"} className="nav-link">
+              All Products
             </Link>
           </li>
 
           {showModeratorBoard && (
             <li className="nav-item">
               <Link to={"/mod"} className="nav-link">
-                Moderator Board
+                Moderator Board n
               </Link>
             </li>
           )}
@@ -74,15 +88,52 @@ const App = () => {
                 Admin Board
               </Link>
             </li>
+            
           )}
 
-          {currentUser && (
+          {showAdminBoard && (
+            <li className="nav-item">
+              <Link to={"/add"} className="nav-link">
+                Add product
+              </Link>
+            </li>
+          )}  
+
+          {showAdminBoard && (
+            <li className="nav-item">
+              <Link to={"/delete"} className="nav-link">
+                delete product
+              </Link>
+            </li>
+          )}
+
+          {showAdminBoard && (
+            <li className="nav-item">
+              <Link to={"/update"} className="nav-link">
+                update status
+              </Link>
+            </li>
+          )}  
+
+          {/* {currentUser && (
             <li className="nav-item">
               <Link to={"/user"} className="nav-link">
                 User
               </Link>
             </li>
-          )}
+          )} */}
+
+          {/* Search Product By Name */}
+
+          {currentUser && (
+            <li className="nav-item">
+              <Link to={"/search"} className="nav-link">
+              search
+              </Link>
+              
+            </li>
+          )}  
+
         </div>
 
         {currentUser ? (
@@ -117,8 +168,8 @@ const App = () => {
 
       <div className="container mt-3">
         <Routes>
-          <Route exact path={"/"} element={<Home />} />
-          <Route exact path={"/home"} element={<Home />} />
+          {/* <Route exact path={"/"} element={<Home />} />
+          <Route exact path={"/home"} element={<Home />} /> */}
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/profile" element={<Profile />} />
@@ -126,6 +177,11 @@ const App = () => {
           <Route path="/mod" element={<BoardModerator />} />
           <Route path="/admin" element={<BoardAdmin />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/all" element={<AllProduct />} />
+          <Route path="/add" element={<AddProduct />} />
+          <Route path="/search" element={<SearchProduct />} />
+          <Route path="/delete" element={<DeleteProduct />} />
+          <Route path="/update" element={<UpdateProduct />} />
         </Routes>
       </div>
 

@@ -6,27 +6,29 @@ const getAllProduct = () => {
   return axios.get(API_URL + "all");
 };
 
-const getProductByName = () => {
-  return axios.get(API_URL + "products/search/{productName}");
+const getProductByName = (productName) => {
+  console.log("product name in call ", productName)
+  return axios.get(API_URL + `products/search/${productName}`);
 };
 
 const addProduct = () => {
   return axios.post(API_URL + "add");
 };
 
-const updateProductById = () => {
-  return axios.put(API_URL + "update/{id}");
+const updateProductById = (id) => {
+  return axios.put(API_URL + `update/${id}`);
 };
 
-const deleteProductById = () => {
-    return axios.delete(API_URL + "update/{id}");
+const deleteProductById = (key) => {
+    return axios.delete(API_URL + `delete/${key}`);
   };
 
-const UserService = {
-  getPublicContent,
-  getUserBoard,
-  getModeratorBoard,
-  getAdminBoard,
+const ProductService = {
+  getAllProduct,
+  getProductByName,
+  addProduct,
+  updateProductById,
+  deleteProductById
 }
 
-export default UserService;
+export default ProductService;
